@@ -1,10 +1,6 @@
 package com.edu.ulab.app.entity;
 
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +8,9 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
+@ToString
 @Table(name = "book", schema = "ulab_edu")
 public class Book {
     @Id
@@ -30,5 +29,6 @@ public class Book {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", nullable = false)
+    @ToString.Exclude
     private Person person;
 }

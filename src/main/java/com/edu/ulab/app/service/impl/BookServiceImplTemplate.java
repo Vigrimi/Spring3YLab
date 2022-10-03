@@ -1,7 +1,10 @@
 package com.edu.ulab.app.service.impl;
 
 import com.edu.ulab.app.dto.BookDto;
+import com.edu.ulab.app.dto.UserDto;
+import com.edu.ulab.app.entity.Book;
 import com.edu.ulab.app.service.BookService;
+import com.edu.ulab.app.web.request.UserBookRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -42,24 +46,43 @@ public class BookServiceImplTemplate implements BookService {
                 },
                 keyHolder);
 
-        bookDto.setId(Objects.requireNonNull(keyHolder.getKey()).longValue());
+        bookDto.setId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return bookDto;
     }
 
     @Override
-    public BookDto updateBook(BookDto bookDto) {
+    public void updateBookById(BookDto bookDto) {
+
+    }
+
+    @Override
+    public BookDto getBookById(int id) {
         // реализовать недстающие методы
         return null;
     }
 
     @Override
-    public BookDto getBookById(Long id) {
+    public void deleteBookById(int id) {
         // реализовать недстающие методы
+    }
+
+    @Override
+    public void deleteAllBooksByUserId(int userId) {
+
+    }
+
+    @Override
+    public List<Integer> getListBooksIdsByUserIdCheckedAndGotFmDB(int userId) {
         return null;
     }
 
     @Override
-    public void deleteBookById(Long id) {
-        // реализовать недстающие методы
+    public List<Book> getAllBooksByUserId(int userId) {
+        return null;
+    }
+
+    @Override
+    public List<Integer> getListBooksIdsForUserAndAddBooksInRepo(UserBookRequest userBookRequest, UserDto createdUser) {
+        return null;
     }
 }

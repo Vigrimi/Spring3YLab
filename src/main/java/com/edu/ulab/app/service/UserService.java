@@ -1,15 +1,19 @@
 package com.edu.ulab.app.service;
 
 import com.edu.ulab.app.dto.UserDto;
+import com.edu.ulab.app.entity.Person;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserService {
     UserDto createUser(UserDto userDto);
 
-    UserDto updateUser(UserDto userDto);
+    int updateUser(UserDto userDto);
 
-    UserDto getUserById(Long id);
+    Person getUserByFullNameAndTitleFromUserDto(UserDto userDto);
 
-    void deleteUserById(Long id);
+    UserDto getUserById(int id);
+
+    void deleteUserByUserIdCheckedIsInDB(int id);
+
 }

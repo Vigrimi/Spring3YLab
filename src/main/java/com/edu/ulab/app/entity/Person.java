@@ -1,16 +1,16 @@
 package com.edu.ulab.app.entity;
 
-
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.Set;
-
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
+@ToString
 @Table(name = "person", schema = "ulab_edu")
 public class Person {
     @Id
@@ -27,13 +27,16 @@ public class Person {
     @Column(nullable = false)
     private int age;
 
-//    @Column(nullable = false)
-//    private int count;
+    // добавить колонку в таблицу, чтобы app не леглo - работает
+    @Transient
+    @Column(nullable = false)
+    private int countBooks;
 
     @OneToMany(mappedBy = "person", cascade = {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.DETACH,
             CascadeType.REFRESH})
+    @ToString.Exclude
     private Set<Book> bookSet;
 }
